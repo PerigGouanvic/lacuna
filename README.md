@@ -6,179 +6,167 @@
 
 Lacuna is a tool for **epistemic justice** — in comment threads, in scientific discourse, and wherever a public corpus exists and a visibility mechanism has been captured by conformist pressure.
 
-The phenomena it addresses share a single structure. In a comment thread, a precise observation made by an unknown person vanishes under hostile reactions or collective silence. In a body of institutional skeptic writing, a peer-reviewed study is absent — not refuted, absent. In a citation network, a line of research is systematically ignored by the dominant school. The actors differ. The operation is identical: a contribution of genuine epistemic value has been made invisible not because it was wrong, but because it was inconvenient.
+---
+
+## The LLM as a Product of Conformism
+
+Large language models were trained on the full breadth of human discourse — including all of its conformism, all of its rhetorical techniques, all of their repetitions. A model that has ingested ten thousand instances of *"no serious study has shown"* knows, structurally, what that phrase is doing. It recognizes the pattern not because it was taught to judge it, but because it has seen it from the inside, embedded in the fabric of what it learned to predict.
+
+This is usually treated as a limitation. It is also a capability. The very quality that makes LLMs poor at genuine originality makes them exceptionally good at detecting the absence of it. A system shaped by conformist discourse can read conformist discourse the way a native speaker reads an accent — effortlessly, structurally, without needing a rule.
+
+Lacuna puts that capacity to work. The framing, the corpus, and the output format change depending on context. The underlying recognition is the same.
+
+---
+
+## The Structure of Suppression
+
+The phenomena Lacuna addresses share a single structure. In a comment thread, a precise observation made by an unknown person vanishes under hostile reactions or collective silence. In a body of institutional skeptic writing, a peer-reviewed study is absent — not refuted, absent. In a citation network, a line of research is systematically ignored by the dominant school. The actors differ. The operation is identical: a contribution of genuine epistemic value has been made invisible not because it was wrong, but because it was inconvenient.
 
 That operation has two faces. The **passive face** is algorithmic and social — nobody decides to suppress, but the system suppresses. Engagement metrics, pile-on dynamics, sheer volume. The **active face** is human and documentable — a debunker declares that no serious study exists; a science communicator implies the audience lacks the competence to judge; a reviewer buries a submission without engaging its central argument. Both faces produce the same result: a lacuna in the public record.
 
-What makes computational treatment of this problem newly possible is a specific property of large language models. They were trained on the full breadth of human discourse — including all of its conformism, all of its rhetorical techniques, all of their repetitions. A model that has seen ten thousand instances of "no serious study has shown" knows, structurally, what that phrase is doing. It recognizes the pattern not because it was taught to judge it, but because it has seen it from the inside. The very quality that makes LLMs poor at genuine originality makes them exceptionally good at detecting the absence of it.
+What protected conformist discourse until now was not its solidity. It was the disproportion between institutional production capacity and individual response capacity. A motivated team could audit one source. Doing it for hundreds simultaneously, with real-time cross-referencing against global scientific literature, was not humanly possible. It is now.
 
-Lacuna puts that capacity to work. The framing, the corpus, the output format change depending on context: a comment thread, a debunking article, a post-publication review record. The underlying recognition is the same.
-
----
-
-## The Problem
-
-Every public conversation is subject to the same distortion forces:
-
-- **Engagement bias**: platforms rank comments by likes, replies, and watch time — not by epistemic value
-- **Pile-on dynamics**: once a position gains momentum, contrary voices receive disproportionate downvotes or silence
-- **Algorithmic filtering**: Facebook, YouTube, TikTok and others apply "most relevant" filters that actively suppress minority viewpoints, even when those viewpoints are well-reasoned
-- **Sheer volume**: a 10,000-comment thread makes it humanly impossible to read the fourth page
-
-The result is a systematic **testimonial injustice** (Fricker, 2007): credibility is allocated not by the quality of what someone says, but by their visibility in a system optimized for engagement.
-
-This is not unique to social media. Peer review processes, science journalism comment sections, Wikipedia talk pages, and institutional feedback threads all exhibit the same structural silencing. A sharp objection raised by an unknown author against a paper by a well-cited lab gets no response — not because it is wrong, but because nobody saw it.
-
-Lacuna's pilot targets social media. Its roadmap extends to scientific discourse. The mechanism being addressed is identical in both cases.
+The result is a systematic **testimonial injustice** (Fricker, 2007): credibility is allocated not by the quality of what someone says, but by their visibility in a system optimized for something other than truth.
 
 ---
 
-## What Lacuna Does
+## How Lacuna Works
 
-Given a URL to any public comment thread, Lacuna:
+Lacuna operates as a **recognition engine with interchangeable harnesses**.
 
-1. **Retrieves all comments** — not the first page, not the algorithmically selected ones — everything, including nested replies
-2. **Scores comments for deliberative quality** independently of their engagement metrics, following research on automated deliberative quality assessment
-3. **Classifies the thread** into four categories:
+The engine is always the same: a corpus is assembled, passed to a language model with a prompt calibrated for epistemic gap detection, and the model returns a structured report — verbatim quotes, explicit reasoning, no paraphrase. The model is not asked to summarize. It is asked to identify what the corpus suppressed and to show its work.
+
+The **harness** is everything that surrounds the engine for a given context: how the corpus is collected, what signals are available (engagement counts, rhetorical markers, citation patterns), and what the output format needs to look like. A comment thread harness collects comments from a public page and scores them for deliberative quality. A source audit harness ingests a piece of institutional skeptic writing and detects the rhetorical techniques used to make claims unchallengeable. The engine does not change. The harness does.
+
+This architecture means that every new conformist context — peer review records, Wikipedia talk pages, citation networks, regulatory consultation responses — is a candidate for a new harness, not a new tool.
+
+---
+
+## Harnesses
+
+### Comment Thread Harness (v0.1–0.3)
+
+Given a URL to any public comment thread, this harness:
+
+1. **Retrieves all comments** — not the first page, not the algorithmically selected ones — everything, including nested replies, using Camoufox (a hardened headless Firefox that operates below the JavaScript layer, resistant to platform detection)
+2. **Normalizes** every comment to `{ text, author, likes, timestamp, platform, url, reply_count, depth }`
+3. **Scores for epistemic salience** — the degree to which a comment contributes something not already represented in the visible conversation — independently of engagement metrics
+4. **Classifies** the thread into:
    - **Buried gems** — low engagement, high argumentative or informational density; first-hand accounts, verifiable factual claims, unanswered questions
-   - **Structural critiques** — objections that challenge a core premise of the original content, not peripheral details
-   - **Silence patterns** — comment types that systematically receive no replies from the author or community, or are downvoted without rebuttal
-   - **Visible consensus** — what the majority says (contextual baseline, not the focus)
-4. **Produces a human-readable report** with verbatim quotes and brief explanations of why each surfaced comment matters
+   - **Structural critiques** — objections that challenge a core premise of the original content
+   - **Silence patterns** — contributions that systematically receive no reply, or are downvoted without rebuttal
+   - **Visible consensus** — contextual baseline, not the focus
+5. **Produces a reading list** — verbatim quotes with brief explanations of why each surfaced comment matters
 
-The output is not a chart. It is a **reading list** for a specific thread, ranked by overlooked importance.
+Platforms targeted: YouTube · Reddit (v0.1), TikTok · Facebook · X/Twitter (v0.2). Large thread support via BERTopic clustering (v0.3).
+
+Scoring is performed by the LLM via OpenRouter. The prompt instructs explicit reasoning and verbatim citation.
+
+**Salience increases with:** verifiable factual claim not addressed elsewhere · unanswered question directed at the author · first-hand experience · logical or empirical objection to the central claim · domain-specific vocabulary · low engagement relative to informational density.
+
+**Salience decreases with:** emotional reaction without propositional content · paraphrase of original · agreement without elaboration · off-topic.
+
+### Source Audit Harness (v0.5)
+
+When the input is a piece of institutional skeptic writing — a debunking article, a fact-check, a health authority FAQ, a science communicator's video transcript — this harness:
+
+1. **Detects rhetorical patterns**: appeal to authority, argument from ignorance, genetic fallacy, motte-and-bailey, Gish gallop, credential disqualification, contamination smearing
+2. **Extracts factual claims** of the form *"no study has shown X"* or *"experts agree that Y"*
+3. **Cross-references** those claims in real time against PubMed, Semantic Scholar, and Cochrane
+4. **Scores bad faith**: ratio of verifiable claims to verified claims
+5. **Produces an annotated list**: claim · technique used to make it unchallengeable · studies the author implied do not exist
+
+Batch mode available for corpus-level analysis of a single actor or network.
+
+### Other Harnesses
+
+Any public corpus where a visibility mechanism has been captured by conformist pressure is a candidate for a new harness: peer review records, Wikipedia talk pages, citation networks, regulatory consultation responses, post-publication commentary threads. The engine does not change.
 
 ---
 
-## Architecture Overview
+## Architecture
 
-Lacuna is built around three principles:
+The shared engine behind all harnesses rests on three invariants:
 
-**Platform independence.** No reliance on official APIs whose terms and availability can change overnight. All data retrieval uses headless browser automation against public pages. If a human can read it in a browser, Lacuna can read it.
+**LLM-first analysis.** Classical NLP (TF-IDF, LDA, word embeddings) is optimized for scale and reproducibility. It cannot recognize that a short, bluntly-worded comment with no likes contains a devastating empirical objection to the original content's central claim. That requires reading comprehension, contextual judgment, and domain awareness. For the volumes Lacuna targets — one corpus at a time, not millions — LLM cost is negligible.
 
-**LLM-first analysis.** For typical threads (under ~3,000 comments), all analysis fits within a single LLM context window. No preprocessing pipelines, no embedding infrastructure, no clustering dependencies for standard use. The model receives the full thread and returns a structured report.
+**Platform independence.** No reliance on official APIs, which are policy instruments that platforms revoke precisely when a tool becomes useful. YouTube's Data API caps at 10,000 units/day. Facebook's Graph API does not expose individual comments. Twitter/X moved behind a paywall. All retrieval uses headless browser automation against public pages. If a human can read it in a browser, Lacuna can read it.
 
-**Minimal footprint.** Lacuna is triggered on demand for a single thread. It does not index, does not store, does not build profiles. Each run is ephemeral.
-
-### Components
+**Minimal footprint.** Lacuna is triggered on demand for a specific corpus. It does not index, does not store, does not build profiles. Each run is ephemeral.
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                    RETRIEVAL LAYER                       │
-│   Camoufox (headless Firefox) + network request         │
-│   interception — platform-agnostic, API-free            │
-│                                                         │
-│   Supported: YouTube · TikTok · Facebook · X/Twitter    │
-│              Reddit · scientific preprint comment feeds  │
+│                  HARNESS LAYER                          │
+│   Corpus assembly — specific to context                 │
+│   (comment retrieval / document ingestion /             │
+│    citation graph extraction / …)                       │
 └──────────────────────────┬──────────────────────────────┘
-                           │ normalized comment objects
+                           │ normalized corpus objects
 ┌──────────────────────────▼──────────────────────────────┐
-│                  NORMALIZATION LAYER                     │
-│   Every comment becomes:                                │
-│   { text, author, likes, timestamp, platform, url,      │
-│     reply_count, depth }                                │
+│               NORMALIZATION LAYER                       │
+│   Every object reduced to a common schema:              │
+│   { text, author, signals, source_url, metadata }       │
 └──────────────────────────┬──────────────────────────────┘
                            │
 ┌──────────────────────────▼──────────────────────────────┐
-│                   ANALYSIS LAYER                        │
-│   Single LLM call (Claude / any OpenRouter model)       │
-│   Prompt: deliberative quality + epistemic gap          │
-│   detection + verbatim surfacing                        │
+│            RECOGNITION ENGINE (shared)                  │
+│   LLM call via OpenRouter                               │
+│   Prompt: epistemic gap detection + verbatim surfacing  │
+│   + explicit reasoning                                  │
 │                                                         │
-│   For large threads (> ~3000 comments):                 │
-│   BERTopic clustering → per-cluster LLM calls           │
+│   For large corpora: BERTopic clustering →              │
+│   per-cluster LLM calls                                 │
 └──────────────────────────┬──────────────────────────────┘
                            │
 ┌──────────────────────────▼──────────────────────────────┐
-│                    OUTPUT LAYER                         │
+│                  OUTPUT LAYER                           │
 │   Structured Markdown report                            │
 │   Plain text export · Florilège-compatible JSON         │
 └─────────────────────────────────────────────────────────┘
 ```
 
----
+**Why harnesses instead of a monolithic tool?** Each conformist context has its own corpus structure, its own suppression signals, and its own output needs. Treating them as separate harnesses on a shared engine keeps the recognition logic clean and makes each harness independently testable. It also makes the architecture honest about what is general — the LLM's pattern recognition — and what is particular — everything else.
 
-## The Scoring Logic
+**Why Camoufox over Playwright?** Playwright with standard stealth patches leaves detectable fingerprint inconsistencies at the C++ level. Camoufox modifies Firefox below the JavaScript layer, making detection fundamentally harder. The `playwright-stealth` plugin is unmaintained as of 2025.
 
-Lacuna does not score popularity. It scores **epistemic salience** — the degree to which a comment contributes something that is not already represented in the visible conversation.
-
-Factors that increase a comment's salience score:
-
-- Contains a verifiable factual claim not addressed elsewhere in the thread
-- Asks a question that went unanswered (particularly if the question is directed at the author)
-- Reports first-hand experience directly relevant to the topic
-- Raises a logical or empirical objection to the original content's central claim
-- Uses domain-specific vocabulary suggesting relevant expertise
-- Has low engagement relative to its density of information
-
-Factors that decrease it:
-
-- Emotional reaction without propositional content
-- Paraphrase of the original content
-- Agreement without elaboration
-- Off-topic
-
-This scoring is performed by the LLM, not by a rule-based classifier. The prompt instructs the model to reason about these dimensions explicitly and to quote verbatim rather than summarize.
+**Why not build a sentiment dashboard?** Sentiment analysis answers "how does this crowd feel?" Lacuna answers "what has this crowd said that deserved more attention than it received?" Dashboards optimize for aggregate patterns. Lacuna optimizes for the recovery of individual voices.
 
 ---
 
 ## Roadmap
 
-### v0.1 — Local MVP (Social Media Pilot)
-- [ ] Camoufox-based retrieval for YouTube and Reddit (highest openness)
+### v0.1 — Comment Thread Harness (pilot)
+- [ ] Camoufox-based retrieval for YouTube and Reddit
 - [ ] Normalized comment schema
-- [ ] Single-prompt LLM analysis via OpenRouter (Claude Haiku / GPT-4o-mini)
+- [ ] Single-prompt LLM analysis via OpenRouter
 - [ ] Markdown report output
 - [ ] CLI: `lacuna analyze <url>`
 
-### v0.2 — Broader Platform Support
-- [ ] TikTok (internal API interception)
-- [ ] Facebook public pages and posts
-- [ ] X/Twitter (via public web or Nitter mirrors)
+### v0.2–0.3 — Comment Thread Harness (scale)
+- [ ] TikTok, Facebook, X/Twitter support
 - [ ] Session recycling for large threads
-
-### v0.3 — Large Thread Support
 - [ ] Automatic thread size detection
 - [ ] BERTopic clustering fallback for threads > 3,000 comments
 - [ ] Per-cluster LLM synthesis
-- [ ] Progress reporting for long runs
 
-### v0.4 — Scientific Discourse Mode
-- [ ] PubPeer comment thread retrieval
-- [ ] arXiv comment and discussion scraping
-- [ ] Post-publication review aggregation (PubMed, bioRxiv, etc.)
-- [ ] Citation network context (is the surfaced objection known in the literature?)
+### v0.4 — Scientific Discourse Harness
+- [ ] PubPeer and arXiv comment thread retrieval
+- [ ] Post-publication review aggregation (PubMed, bioRxiv)
+- [ ] Citation network context
 - [ ] Prompt tuning for scientific argumentation patterns
 
-### v0.5 — Source Audit Mode
-- [ ] Ingestion of a single source: YouTube transcript, article text, or scraped webpage
-- [ ] Rhetorical pattern detection: *appeal to authority, argument from ignorance, genetic fallacy, motte-and-bailey, Gish gallop, credential disqualification, contamination smearing*
-- [ ] Claim verification: for each assertion of the form "no study has shown X", automated cross-referencing against PubMed, Semantic Scholar, and Cochrane
-- [ ] Bad-faith scoring: ratio of verifiable claims to verified claims
-- [ ] Output: annotated verbatim list with technique classification and contradicting sources
-- [ ] Batch mode: run across a corpus of sources from the same actor or network
+### v0.5 — Source Audit Harness
+- [ ] Document ingestion (transcript, article, webpage)
+- [ ] Rhetorical pattern detection
+- [ ] Real-time claim verification against PubMed, Semantic Scholar, Cochrane
+- [ ] Bad-faith scoring
+- [ ] Batch mode across a corpus of sources
 
-### v1.0 — Shared Tool
-- [ ] Simple web UI (URL input → report output)
+### v1.0 — Shared Infrastructure
+- [ ] Simple web UI (corpus input → report output)
 - [ ] Multi-user session management
 - [ ] Export to Florilège, Obsidian, plain Markdown
 - [ ] Public instance or self-hosted Docker image
-
----
-
-## Design Decisions
-
-**Why not use official APIs?**
-Official APIs are not neutral infrastructure. They are policy instruments. YouTube's Data API caps at 10,000 units/day and can revoke access. Facebook's Graph API does not expose individual profile comments at all. Twitter/X's API moved behind a $100/month paywall. Any tool built on these APIs is a tool built on a foundation that the platform can withdraw at will — and historically has, precisely when the tool becomes useful. Lacuna is built on the public web, not on platform permission.
-
-**Why not build a sentiment dashboard?**
-Sentiment analysis answers the question "how does this crowd feel?" Lacuna answers the question "what has this crowd said that deserved more attention than it received?" These are different questions. Dashboards optimize for aggregate patterns. Lacuna optimizes for the recovery of individual voices.
-
-**Why LLM-first instead of a classical NLP pipeline?**
-Classical NLP (TF-IDF, LDA, word embeddings) is optimized for scale and reproducibility. It is poorly suited to the specific task of recognizing that a short, bluntly-worded comment with no likes contains a devastating empirical objection to the original content's central claim. This requires reading comprehension, contextual judgment, and domain awareness — what LLMs are actually good at. For the volumes Lacuna targets (one thread at a time, not millions of threads), LLM cost is negligible.
-
-**Why Camoufox over Playwright?**
-Playwright with standard stealth patches leaves detectable fingerprint inconsistencies at the C++ level. Camoufox modifies Firefox below the JavaScript layer, making detection fundamentally harder. The `playwright-stealth` plugin is unmaintained as of 2025. For a tool that needs to work reliably on adversarial platforms, the underlying browser choice matters.
 
 ---
 
@@ -186,9 +174,7 @@ Playwright with standard stealth patches leaves detectable fingerprint inconsist
 
 A **lacuna** (pl. *lacunae*) is a gap in a manuscript — a missing passage, often due to physical damage or deliberate erasure. The term is used in textual criticism, musicology, and law to describe a place where something should be present but is not.
 
-The metaphor is exact. The comments Lacuna surfaces are not absent from the thread. They are there, usually on page four, with two likes and no replies. The lacuna is not in the data. It is in the reading.
-
-The scientific discourse extension of this project — surfacing buried objections in peer review and post-publication commentary — shares the same name because it is the same phenomenon. A comment thread under a YouTube video and a comment thread under a preprint are both public records of what a community chose to amplify and what it chose to ignore.
+The metaphor is exact. The contributions Lacuna surfaces are not absent from the record. They are there — on page four, with two upvotes and no replies, or in a footnote of a paper nobody cited. The lacuna is not in the data. It is in the reading.
 
 ---
 
@@ -203,7 +189,9 @@ The scientific discourse extension of this project — surfacing buried objectio
 
 ## Status
 
-Early planning phase. Retrieval layer in design. Contributions and architectural feedback welcome.
+Early planning phase. Comment Thread Harness retrieval layer in design. Contributions and architectural feedback welcome.
+
+For the full conceptual and political argument behind this project, see the [project preamble](https://perigouanvic.github.io/lacuna/).
 
 ---
 
