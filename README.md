@@ -1,26 +1,18 @@
 # Lacuna
 
 > *A lacuna is not an absence. It is a presence that has been made invisible.*
+>
+> *AI may be incapable of originality, but it is priceless for spotting conformity — and that is often all we need to recover it.*
 
-Lacuna is a tool for **epistemic justice in comment threads** — and beyond.
+Lacuna is a tool for **epistemic justice** — in comment threads, in scientific discourse, and wherever a public corpus exists and a visibility mechanism has been captured by conformist pressure.
 
-It retrieves the full comment history of any public post, article, or discussion, then surfaces what algorithmic ranking, social pressure, and sheer noise have buried: the dissenting expert, the lived-experience witness, the question nobody answered, the criticism that was easier to ignore than refute.
+The phenomena it addresses share a single structure. In a comment thread, a precise observation made by an unknown person vanishes under hostile reactions or collective silence. In a body of institutional skeptic writing, a peer-reviewed study is absent — not refuted, absent. In a citation network, a line of research is systematically ignored by the dominant school. The actors differ. The operation is identical: a contribution of genuine epistemic value has been made invisible not because it was wrong, but because it was inconvenient.
 
-Lacuna does not aggregate. It does not build datasets. It is not a sentiment dashboard. It is a **targeted lens** that a person activates on a specific conversation when they suspect something important has been missed.
+That operation has two faces. The **passive face** is algorithmic and social — nobody decides to suppress, but the system suppresses. Engagement metrics, pile-on dynamics, sheer volume. The **active face** is human and documentable — a debunker declares that no serious study exists; a science communicator implies the audience lacks the competence to judge; a reviewer buries a submission without engaging its central argument. Both faces produce the same result: a lacuna in the public record.
 
----
+What makes computational treatment of this problem newly possible is a specific property of large language models. They were trained on the full breadth of human discourse — including all of its conformism, all of its rhetorical techniques, all of their repetitions. A model that has seen ten thousand instances of "no serious study has shown" knows, structurally, what that phrase is doing. It recognizes the pattern not because it was taught to judge it, but because it has seen it from the inside. The very quality that makes LLMs poor at genuine originality makes them exceptionally good at detecting the absence of it.
 
-## Why This Exists
-
-Two phenomena share the same mechanism — and Lacuna addresses both.
-
-In public comment threads, a precise observation made by an unknown person vanishes under the weight of hostile reactions or collective silence. The *spiral of silence* (Noelle-Neumann, 1974) is not a social curiosity: it is infrastructure. Algorithms amplify dominant positions, distorting the perception of what the majority actually thinks. A sharp objection posted at 2am by someone with no followers sits on page four with two upvotes and no replies — not because it is wrong, but because the system was not built to surface it.
-
-In institutional skeptic discourse — the debunkers, the demystifiers, the "defenders of science in society" — the same suppression operates in a more polished form. A study published in a peer-reviewed journal is absent from the argument: not refuted, absent. The phrase *"no serious study has shown"* is stated as fact and rarely verified by the audience. The interlocutor is told the subject is too complicated for them to judge — while simultaneously being asked to trust the person doing the judging. These are not isolated rhetorical failures. They are patterns, repeated across hundreds of sources, and they are detectable.
-
-What protected conformist discourse until now was not its solidity. It was the disproportion between institutional production capacity and individual response capacity. A motivated team could audit one source. Doing it for hundreds simultaneously, with real-time cross-referencing against global scientific literature databases, was not humanly possible. It is now.
-
-For the full conceptual and political argument behind this project, see the [project preamble](https://perigouanvic.github.io/lacuna/).
+Lacuna puts that capacity to work. The framing, the corpus, the output format change depending on context: a comment thread, a debunking article, a post-publication review record. The underlying recognition is the same.
 
 ---
 
