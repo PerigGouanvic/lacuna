@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LACUNA — Preamble / Préambule</title>
+  <style>
+    :root {
+      --bg: #f7f6f2;
+      --surface: #f9f8f5;
+      --text: #28251d;
+      --text-muted: #7a7974;
+      --text-faint: #bab9b4;
+      --primary: #01696f;
+      --primary-hover: #0c4e54;
+      --border: #d4d1ca;
+      --divider: #dcd9d5;
+      --radius: 0.5rem;
+      --font-body: 'EB Garamond', Georgia, serif;
+      --font-ui: 'Work Sans', system-ui, sans-serif;
+    }
+    [data-theme="dark"] {
+      --bg: #171614;
+      --surface: #1c1b19;
+      --text: #cdccca;
+      --text-muted: #797876;
+      --text-faint: #5a5957;
+      --primary: #4f98a3;
+      --primary-hover: #227f8b;
+      --border: #393836;
+      --divider: #262523;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: clamp(1.05rem, 1rem + 0.25vw, 1.2rem);
+      line-height: 1.75;
+      min-height: 100dvh;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--surface);
+      border-bottom: 1px solid var(--divider);
+      padding: 0.75rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-ui);
+      font-size: 0.875rem;
+    }
+    .header-left { display: flex; align-items: center; gap: 1.5rem; }
+    .logo {
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.8rem;
+    }
+    .lang-toggle {
+      display: flex;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .lang-btn {
+      padding: 0.3rem 0.75rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-ui);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      transition: background 180ms, color 180ms;
+    }
+    .lang-btn.active { background: var(--primary); color: #fff; }
+    .lang-btn:not(.active):hover { background: var(--divider); color: var(--text); }
+    .header-right { display: flex; align-items: center; gap: 1rem; }
+    .theme-btn {
+      background: none; border: none; cursor: pointer;
+      color: var(--text-muted); padding: 0.25rem;
+      display: flex; align-items: center;
+    }
+    .theme-btn:hover { color: var(--text); }
+    main { max-width: 680px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+    .lang-section { display: none; }
+    .lang-section.visible { display: block; }
+    h1 {
+      font-family: var(--font-body);
+      font-size: clamp(1.6rem, 1.2rem + 2vw, 2.4rem);
+      font-weight: 400; line-height: 1.2;
+      margin-bottom: 0.4rem; letter-spacing: -0.01em;
+    }
+    .subtitle {
+      font-family: var(--font-ui); font-size: 0.9rem;
+      color: var(--text-muted); margin-bottom: 3rem;
+      letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    h2 {
+      font-family: var(--font-ui); font-size: 0.78rem;
+      font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--primary);
+      margin-top: 3rem; margin-bottom: 1rem;
+    }
+    p { margin-bottom: 1.2rem; max-width: 68ch; }
+    p:last-child { margin-bottom: 0; }
+    em { font-style: italic; }
+    strong { font-weight: 600; }
+    ul { list-style: none; margin-bottom: 1.2rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    ul li { padding-left: 1.2rem; position: relative; max-width: 68ch; }
+    ul li::before { content: "–"; position: absolute; left: 0; color: var(--text-faint); }
+    hr { border: none; border-top: 1px solid var(--divider); margin: 2.5rem 0; }
+    .coda { font-style: italic; color: var(--text-muted); margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--divider); }
+    .github-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-family: var(--font-ui); font-size: 0.8rem;
+      color: var(--text-muted); text-decoration: none; transition: color 180ms;
+    }
+    .github-link:hover { color: var(--primary); }
+    @media (max-width: 600px) {
+      main { padding: 2.5rem 1.25rem 4rem; }
+      header { padding: 0.75rem 1.25rem; }
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+  <div class="header-left">
+    <a href="https://github.com/PerigGouanvic/lacuna" class="logo" target="_blank" rel="noopener">Lacuna</a>
+    <div class="lang-toggle" role="group" aria-label="Language / Langue">
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" id="btn-fr" onclick="setLang('fr')">FR</button>
+    </div>
+  </div>
+  <div class="header-right">
+    <a href="https://github.com/PerigGouanvic/lacuna" class="github-link" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+      GitHub
+    </a>
+    <button class="theme-btn" id="theme-toggle" aria-label="Toggle theme">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<main>
+  <div class="lang-section" id="lang-en">
+    <h1>LACUNA — Preamble</h1>
+    <p class="subtitle">Conformism as Infrastructure</p>
+    <p>Two phenomena share the same mechanism.</p>
+    <p>In comment threads across news sites, social networks, and forums, a precise observation made by an unknown person vanishes under the weight of hostile reactions or collective silence. In a piece of institutional skeptic writing, a study published in a peer-reviewed journal is absent — not refuted, absent. In both cases, what operates is not error. It is organized conformism.</p>
+    <hr>
+    <h2>1. The Appeal to Conformism</h2>
+    <p>The <em>spiral of silence</em> (Noelle-Neumann, 1974) establishes that individuals who perceive their opinions as minority positions tend to stay silent out of fear of social isolation. This mechanism has grown more complex online: algorithms amplify dominant positions, distorting the perception of what the majority actually thinks. People willing to raise a question in private will not do so in a comment section where they anticipate group hostility.</p>
+    <p>In institutional skeptic discourse, the same appeal operates in a more polished form: <em>"it's complicated," "experts agree," "you don't have the tools to judge."</em> These formulations delegate epistemic authority to an external source while insinuating that doubt is a form of naivety or social danger. The result is identical: the interlocutor abandons autonomous evaluation.</p>
+    <hr>
+    <h2>2. Silence About Certain Things</h2>
+    <p>The other mechanism is structured omission. In a comment thread, it takes the form of algorithmic invisibility: a well-founded objection exists, on page four, with two upvotes. In institutional skeptic discourse, it takes the form of declared non-existence: <em>"no serious study has shown"</em> — a claim that is often false and rarely verified by the audience.</p>
+    <p>Neither form leaves a visible trace. A refuted argument is present in the debate. An ignored argument is not. This is precisely why this type of suppression has resisted systematic treatment until now.</p>
+    <hr>
+    <h2>3. Recurring Operations</h2>
+    <ul>
+      <li><strong>Guilt by association</strong>: disqualification by proximity without engaging the content</li>
+      <li><strong>Emotional appeal</strong>: serious cases, victims, impending catastrophes that short-circuit evaluation through affective saturation</li>
+      <li><strong>Asymmetry of the burden of proof</strong>: doubt must justify itself; consensus is treated as a natural state exempt from demonstration</li>
+      <li><strong>Credential disqualification</strong>: competence in logic treated as an acquired specialty rather than an exercised faculty</li>
+      <li><strong>Accumulation of peripheral objections</strong> that buries a central objection under a volume discouraging any methodical response</li>
+    </ul>
+    <hr>
+    <h2>4. The Institutionalization of Skepticism and Contamination Smearing</h2>
+    <p>For a long time, the grey zones of knowledge lived in their own networks, relatively insulated from public debate. A parapsychology researcher could work in a government laboratory, publish in specialized journals, have peers and critics — and remain invisible to the general public. A political scientist documenting phenomena of institutional collusion worked in their corner, read by a few hundred people. A clinic exploring unorthodox medicine accumulated data that could be found if one looked, without anyone feeling compelled to render a public verdict.</p>
+    <p>That compartmentalization broke down with the massification of information. These researchers, findings, and practices became visible — sometimes through mainstream documentaries, sometimes by reaching general awareness through accumulated evidence. It was precisely at that moment that institutional skepticism mobilized, bringing with it a new logic: contamination smearing. Since these subjects had become visible enough to threaten consensus, it was no longer sufficient to refute them — it became necessary to make the very act of mentioning them toxic. A serious political scientist who appears in a media outlet deemed undesirable gets filed in the same bin as the outlet that hosts them. Someone who honestly cites the work of a consciousness research laboratory — published, peer-reviewed, funded — finds themselves associated with esotericists, conspiracy theorists, and revisionists, depending on the rhetorical moment.</p>
+    <p>The result is a zone of prohibition that has expanded considerably over twenty years. Questions that were open to academic debate are today subject to a de facto ban: not because they have been refuted, but because raising them has become a sign of suspect allegiance.</p>
+    <hr>
+    <h2>5. What Computational Power Changes</h2>
+    <p>These mechanisms are not new. What changes is that they can now be detected at scale, with verifiable sources, across corpora that no human team could process in the same timeframe. Auditing one source was within reach of a motivated team. Doing it for hundreds of sources simultaneously, with real-time verification against global scientific literature databases, was not.</p>
+    <p>What protected conformist discourse was not its solidity. It was the disproportion between institutional production capacity and individual response capacity. Lacuna reduces that disproportion.</p>
+    <hr>
+    <h2>6. Lacuna Takes a Side</h2>
+    <p>To enter a debate where the currency of exchange consists of facts and their interpretation is necessarily to defend a conception of truth. Claiming neutrality in this context is not an epistemic position — it is a rhetorical posture, most often in service of the status quo.</p>
+    <p>Lacuna takes the side of examining facts against their suppression. Of questions asked against their prohibition. Of rigorous refutation against convenient omission. This position is not ideological in the partisan sense: it is methodological. It holds that truth is better found in a space where objections circulate than in a space where they are smothered before being heard.</p>
+    <p>That is the only side Lacuna defends — and it defends it explicitly.</p>
+    <p class="coda">Its adversary is not science. It is conformism disguised as science.</p>
+  </div>
+  <div class="lang-section" id="lang-fr">
+    <h1>LACUNA — Préambule</h1>
+    <p class="subtitle">Le conformisme comme infrastructure</p>
+    <p>Deux phénomènes partagent la même mécanique.</p>
+    <p>Dans les fils de commentaires des médias, des réseaux sociaux, des forums, une observation précise posée par un inconnu disparaît sous le poids des réactions hostiles ou du simple silence collectif. Dans un article de vulgarisation sceptique, une étude publiée dans une revue à comité de lecture est absente — non réfutée, absente. Dans les deux cas, ce qui opère n'est pas l'erreur. C'est le conformisme organisé.</p>
+    <hr>
+    <h2>1. L'appel au conformisme</h2>
+    <p>La <em>spirale du silence</em> (Noelle-Neumann, 1974) établit que les individus qui perçoivent leurs opinions comme minoritaires tendent à se taire par peur de l'isolement social. Ce mécanisme s'est complexifié en ligne : les algorithmes amplifient les positions dominantes, faussant la perception de ce que pense réellement la majorité. Des gens prêts à soulever une question en privé ne le feront pas sur une page de commentaires où ils anticipent l'hostilité du groupe.</p>
+    <p>Dans le discours sceptique institutionnel, le même appel opère sous une forme plus habillée : <em>« c'est compliqué », « les experts s'accordent », « vous n'avez pas les outils pour juger »</em>. Ces formulations délèguent la compétence épistémique vers une autorité externe tout en insinuant que le doute est une forme de naïveté ou de danger social. Le résultat est identique : l'interlocuteur renonce à l'évaluation autonome.</p>
+    <hr>
+    <h2>2. Le silence sur certaines choses</h2>
+    <p>L'autre mécanisme est l'omission structurée. Dans un fil de commentaires, elle prend la forme de l'invisibilité algorithmique : une objection fondée existe, en page quatre, avec deux mentions. Dans le discours sceptique institutionnel, elle prend la forme de l'inexistence déclarée : <em>« aucune étude sérieuse n'a montré »</em> — affirmation souvent fausse, rarement vérifiée par l'audience.</p>
+    <p>Les deux formes ne laissent pas de trace visible. Un argument réfuté est présent dans le débat. Un argument ignoré n'y est pas. C'est précisément pourquoi ce type de suppression a résisté jusqu'ici au traitement systématique.</p>
+    <hr>
+    <h2>3. Autres opérations récurrentes</h2>
+    <ul>
+      <li><strong>La culpabilité par association</strong> : disqualification par proximité sans toucher au contenu</li>
+      <li><strong>L'appel à l'émotion</strong> : cas graves, victimes, catastrophes à venir, court-circuit de l'évaluation par saturation affective</li>
+      <li><strong>L'asymétrie de la charge de la preuve</strong> : le doute doit se justifier, le consensus est traité comme un état naturel exempt de démonstration</li>
+      <li><strong>La disqualification par titre</strong> : la compétence en logique traitée comme une spécialité acquise plutôt qu'une faculté exercée</li>
+      <li><strong>L'accumulation d'objections périphériques</strong> qui noie une objection centrale sous un volume décourageant toute réponse méthodique</li>
+    </ul>
+    <hr>
+    <h2>4. L'institutionnalisation du scepticisme et le salissage par contamination</h2>
+    <p>Pendant longtemps, les zones grises de la connaissance vivaient dans leurs propres réseaux, relativement étanches au débat public. Un chercheur en parapsychologie pouvait travailler dans un laboratoire gouvernemental, publier dans des revues spécialisées, avoir ses pairs et ses contradicteurs — et rester invisible au grand public. Un politologue documentant des phénomènes de connivence institutionnelle faisait son travail dans son coin, lu par quelques centaines de personnes. Une clinique explorant une médecine peu orthodoxe accumulait des données que l'on pouvait trouver si l'on cherchait, sans que personne ne se sente obligé de trancher publiquement.</p>
+    <p>Ce cloisonnement a sauté avec la massification de l'information. Ces chercheurs, ces résultats, ces pratiques sont devenus visibles — parfois via des documentaires grand public, parfois en atteignant le courant dominant par accumulation de preuves. C'est précisément à ce moment que le scepticisme institutionnel est entré en action, et avec lui une logique nouvelle : le salissage par contamination. Puisque ces sujets devenaient assez visibles pour menacer le consensus, il fallait non seulement les réfuter, mais rendre toxique le fait même de les mentionner. Un politologue sérieux qui paraît dans un média jugé indésirable se retrouve classé dans la même poubelle que le média qui l'accueille. Quelqu'un qui cite honnêtement les travaux d'un laboratoire de recherche sur la conscience — travaux publiés, soumis à révision par les pairs, financés — se voit associé aux ésotéristes, aux complotistes, aux révisionnistes, selon la rhétorique du moment.</p>
+    <p>Le résultat est une zone d'interdit qui s'est considérablement élargie depuis vingt ans. Des questions ouvertes au débat académique sont aujourd'hui frappées d'une interdiction de fait : non pas parce qu'elles ont été réfutées, mais parce que les poser est devenu le signe d'une appartenance suspecte.</p>
+    <hr>
+    <h2>5. Ce que la puissance de calcul change</h2>
+    <p>Ces mécanismes ne sont pas nouveaux. Ce qui change, c'est qu'ils peuvent maintenant être détectés à l'échelle, avec des sources vérifiables, sur des corpus qu'aucune équipe humaine ne pourrait traiter dans les mêmes délais. Auditer un émetteur était à la portée d'une équipe motivée. Le faire pour des centaines d'émetteurs simultanément, avec vérification dans les bases de données de la littérature scientifique mondiale, ne l'était pas.</p>
+    <p>Ce qui protégeait le discours conformiste n'était pas sa solidité. C'était la disproportion entre la capacité de production institutionnelle et la capacité de réponse individuelle. Lacuna réduit cette disproportion.</p>
+    <hr>
+    <h2>6. Lacuna prend parti</h2>
+    <p>Entrer dans un débat où la monnaie d'échange est constituée de faits et de leur interprétation, c'est nécessairement défendre une conception de la vérité. Prétendre à la neutralité dans ce contexte n'est pas une position épistémique — c'est une posture rhétorique, souvent au service du statu quo.</p>
+    <p>Lacuna prend parti pour l'examen des faits contre leur suppression. Pour la question posée contre son interdiction. Pour la réfutation rigoureuse contre l'omission commode. Ce parti pris n'est pas idéologique au sens partisan du terme : il est méthodologique. Il dit que la vérité se trouve mieux dans un espace où les objections circulent que dans un espace où elles sont étouffées avant d'avoir été entendues.</p>
+    <p>C'est le seul parti que Lacuna défend — et il le défend explicitement.</p>
+    <p class="coda">Son adversaire n'est pas la science. C'est le conformisme déguisé en science.</p>
+  </div>
+</main>
+<script>
+(function () {
+  const root = document.documentElement;
+  const themeBtn = document.getElementById('theme-toggle');
+  let dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  function applyTheme() {
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+    themeBtn.innerHTML = dark
+      ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+      : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  }
+  themeBtn.addEventListener('click', () => { dark = !dark; applyTheme(); });
+  applyTheme();
+  function detectLang() {
+    const langs = navigator.languages || [navigator.language || 'en'];
+    for (const l of langs) { if (l.toLowerCase().startsWith('fr')) return 'fr'; }
+    return 'en';
+  }
+  function setLang(lang) {
+    document.getElementById('lang-en').classList.toggle('visible', lang === 'en');
+    document.getElementById('lang-fr').classList.toggle('visible', lang === 'fr');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+    document.documentElement.lang = lang;
+  }
+  window.setLang = setLang;
+  setLang(detectLang());
+})();
+</script>
+</body>
+</html>
