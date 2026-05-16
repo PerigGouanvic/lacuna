@@ -10,6 +10,20 @@ Lacuna does not aggregate. It does not build datasets. It is not a sentiment das
 
 ---
 
+## Why This Exists
+
+Two phenomena share the same mechanism — and Lacuna addresses both.
+
+In public comment threads, a precise observation made by an unknown person vanishes under the weight of hostile reactions or collective silence. The *spiral of silence* (Noelle-Neumann, 1974) is not a social curiosity: it is infrastructure. Algorithms amplify dominant positions, distorting the perception of what the majority actually thinks. A sharp objection posted at 2am by someone with no followers sits on page four with two upvotes and no replies — not because it is wrong, but because the system was not built to surface it.
+
+In institutional skeptic discourse — the debunkers, the demystifiers, the "defenders of science in society" — the same suppression operates in a more polished form. A study published in a peer-reviewed journal is absent from the argument: not refuted, absent. The phrase *"no serious study has shown"* is stated as fact and rarely verified by the audience. The interlocutor is told the subject is too complicated for them to judge — while simultaneously being asked to trust the person doing the judging. These are not isolated rhetorical failures. They are patterns, repeated across hundreds of sources, and they are detectable.
+
+What protected conformist discourse until now was not its solidity. It was the disproportion between institutional production capacity and individual response capacity. A motivated team could audit one source. Doing it for hundreds simultaneously, with real-time cross-referencing against global scientific literature databases, was not humanly possible. It is now.
+
+For the full conceptual and political argument behind this project, see the [project preamble](https://perigouanvic.github.io/lacuna/).
+
+---
+
 ## The Problem
 
 Every public conversation is subject to the same distortion forces:
@@ -143,6 +157,14 @@ This scoring is performed by the LLM, not by a rule-based classifier. The prompt
 - [ ] Post-publication review aggregation (PubMed, bioRxiv, etc.)
 - [ ] Citation network context (is the surfaced objection known in the literature?)
 - [ ] Prompt tuning for scientific argumentation patterns
+
+### v0.5 — Source Audit Mode
+- [ ] Ingestion of a single source: YouTube transcript, article text, or scraped webpage
+- [ ] Rhetorical pattern detection: *appeal to authority, argument from ignorance, genetic fallacy, motte-and-bailey, Gish gallop, credential disqualification, contamination smearing*
+- [ ] Claim verification: for each assertion of the form "no study has shown X", automated cross-referencing against PubMed, Semantic Scholar, and Cochrane
+- [ ] Bad-faith scoring: ratio of verifiable claims to verified claims
+- [ ] Output: annotated verbatim list with technique classification and contradicting sources
+- [ ] Batch mode: run across a corpus of sources from the same actor or network
 
 ### v1.0 — Shared Tool
 - [ ] Simple web UI (URL input → report output)
