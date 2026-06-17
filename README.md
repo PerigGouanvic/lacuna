@@ -32,11 +32,15 @@ The result is a systematic **testimonial injustice** (Fricker, 2007): credibilit
 
 ## How Lacuna Works
 
-Lacuna operates as a **recognition engine with interchangeable harnesses**.
+The recognition engine at the center of Lacuna has a name: **Lacunabot**. One agent, two modes — selected automatically from the corpus and the task, or set explicitly when the call is unambiguous.
 
-The engine is always the same: a corpus is assembled, passed to a language model with a prompt calibrated for epistemic gap detection, and the model returns a structured report — verbatim quotes, explicit reasoning, no paraphrase. The model is not asked to summarize. It is asked to identify what the corpus suppressed and to show its work.
+**Brandoli mode** operates on the conformist corpus. It compresses bloat, exposes the rhetorical machinery — appeal to authority, motte-and-bailey, Gish gallop, contamination smearing — and measures the ratio of bluster to substance. Its work is destructive in the useful sense: it deflates what was inflated.
 
-The **harness** is everything that surrounds the engine for a given context: how the corpus is collected, what signals are available (engagement counts, rhetorical markers, citation patterns), and what the output format needs to look like. A comment thread harness collects comments from a public page and scores them for deliberative quality. A source audit harness ingests a piece of institutional skeptic writing and detects the rhetorical techniques used to make claims unchallengeable. The engine does not change. The harness does.
+**Anoma mode** operates on the anomalous corpus — the studies, admissions, and primary sources that conformist discourse treats as if they didn't exist. It does not maintain a hidden database of facts; it indexes what is already public, link by link, and re-surfaces the right one on demand. *These are only links* — the permanence lives in the journals and the preprint servers, not in Lacunabot. Anoma harvests broadly and indiscriminately, from the well-documented to the more damaging cases, because at scale a fact's safety comes from being one of thousands a search can surface, not from being locked away.
+
+A side effect of Anoma mode, observed more than designed: when it supplies primary sources to an underdeveloped minority argument, the argument sometimes comes back stronger — closer to the version its author would have made without the conformist pressure that shaped how they first framed it. Lacuna doesn't promise this. It happens, or it doesn't.
+
+The **harness** is everything that surrounds Lacunabot for a given context: how the corpus is collected, what signals are available (engagement counts, rhetorical markers, citation patterns), and what the output format needs to look like. A comment thread harness collects comments from a public page and scores them for deliberative quality. A source audit harness ingests a piece of institutional skeptic writing and detects the rhetorical techniques used to make claims unchallengeable. The same agent runs underneath both, switching modes as the material demands. The harness changes. Lacunabot does not.
 
 This architecture means that every new conformist context — peer review records, Wikipedia talk pages, citation networks, regulatory consultation responses — is a candidate for a new harness, not a new tool.
 
@@ -92,7 +96,7 @@ The shared engine behind all harnesses rests on three invariants:
 
 **Platform independence.** No reliance on official APIs, which are policy instruments that platforms revoke precisely when a tool becomes useful. YouTube's Data API caps at 10,000 units/day. Facebook's Graph API does not expose individual comments. Twitter/X moved behind a paywall. All retrieval uses headless browser automation against public pages. If a human can read it in a browser, Lacuna can read it.
 
-**Minimal footprint.** Lacuna is triggered on demand for a specific corpus. It does not index, does not store, does not build profiles. Each run is ephemeral.
+**Minimal footprint, except where indexing is the point.** In Brandoli mode, Lacuna is triggered on demand for a specific corpus: no profiles, no history, no retained text, each run ephemeral. Anoma mode is the deliberate exception — it maintains a standing, public index of links to primary sources, because public indexing at scale is what makes a fact hard to bury and hard to single out. The asymmetry is intentional: ephemeral where persistence would mean surveillance, persistent where ephemerality would leave an attackable shortlist instead of a haystack.
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -109,10 +113,10 @@ The shared engine behind all harnesses rests on three invariants:
 └──────────────────────────┬──────────────────────────────┘
                            │
 ┌──────────────────────────▼──────────────────────────────┐
-│            RECOGNITION ENGINE (shared)                  │
-│   LLM call via OpenRouter                               │
-│   Prompt: epistemic gap detection + verbatim surfacing  │
-│   + explicit reasoning                                  │
+│              LACUNABOT (shared engine)                  │
+│   LLM call via OpenRouter — mode: Brandoli or Anoma     │
+│   Brandoli: rhetorical pattern detection + compression  │
+│   Anoma: public link indexing + primary-source surfacing│
 │                                                         │
 │   For large corpora: BERTopic clustering →              │
 │   per-cluster LLM calls                                 │
